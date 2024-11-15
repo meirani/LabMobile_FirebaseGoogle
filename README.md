@@ -5,7 +5,7 @@
 ### Shift E
 
 ## Demo Video
-![Demo](2024-11-16%01-24-49.gif)
+![Demo](2024-11-16%2001-24-49.gif)
 
 
 ## Persiapan (Firebase)
@@ -48,6 +48,8 @@ router.isReady().then(() => {
 
 ```
 file diatas ini berfungsi menginisialisasi Vue dengan Ionic dan Pinia untuk manajemen state, mengatur CSS dasar dari Ionic, dan mengonfigurasi router. aplikasi ini juga dipasang ke elemen HTML setelah router siap.
+
+
 2. firebase.ts
 ```
 // src/utils/firebase.ts
@@ -72,6 +74,8 @@ const googleProvider = new GoogleAuthProvider();
 export { auth, googleProvider };
 ```
 Kode diatas ini adalah file untuk integrasi firebase, sesuaikan firebase config dengan data yang ada di project firebase kita
+
+
 3. auth.ts
 ```
 export const useAuthStore = defineStore('auth', () => {
@@ -134,3 +138,89 @@ export const useAuthStore = defineStore('auth', () => {
 });
 ```
 Di atas ini adalah fungsi yang menggunakan Pinia dan Firebase. Terdapat variabel user untuk menyimpan data pengguna dan isAuth yabg memeriksa status login. Fungsi loginWithGoogle mengimplementasikan login menggunakan Google dan mengarahkan pengguna ke halaman home jika berhasil login, jika gagal, alert ditampilkan. Fungsi logout untuk keluar dari akun, menghapus status autentikasi di Firebase dan Google, dan mengarahkan ke halaman login.
+
+
+4. file tampilan halaman
+LoginPage.vue: ini adalah file untuk tampilan halaman login, halaman login berisi tulisan "Praktikum Pemograman Mobile" dan juga satu button untuk login menggunakan google
+TabsMenu.vue: ini adalah file yang berada di folder components, file ini untuk membuat navigasi menu yang berisi dua icon untuk mengarahkan ke halaman home dan profile
+HomePage.vue: ini adalah halaman home yang akan muncul pertama kali saat user berhasil login, halaman ini hanya kosong saja dengan title home
+ProfilePage.vue: merupakan halaman profile yang menampilkan informasi nama dan email user, halaman ini juga mengambil dan menampilkan foto profile user, terdapat button untuk logout yang berfungsi untuk keluar dari akun.
+```
+const authStore = useAuthStore();
+const user = computed(() => authStore.user);
+
+const logout = () => {
+    authStore.logout();
+};
+
+const userPhoto = ref(user.value?.photoURL || 'https://ionicframework.com/docs/img/demos/avatar.svg');
+
+function handleImageError() {
+    userPhoto.value = 'https://ionicframework.com/docs/img/demos/avatar.svg';
+}
+```
+
+
+5. index.ts
+```
+const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/',
+    redirect: '/login',
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginPage,
+    meta: {
+      isAuth: false,
+    },
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomePage,
+    meta: {
+      isAuth: true,
+    },
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfilePage,
+    meta: {
+      isAuth: true,
+    },
+  },
+];
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes,
+});
+
+router.beforeEach(async (to, from, next) => {
+  const authStore = useAuthStore();
+
+  if (authStore.user === null) {
+    await new Promise<void>((resolve) => {
+      const unsubscribe = onAuthStateChanged(auth, () => {
+        resolve();
+        unsubscribe();
+      });
+    });
+  }
+
+  if (to.path === '/login' && authStore.isAuth) {
+    next('/home');
+  } else if (to.meta.isAuth && !authStore.isAuth) {
+    next('/login');
+  } else {
+    next();
+  }
+});
+
+export default router;
+```
+Kode di atas adalah konfigurasi untuk routing menggunakan Vue Router dan Ionic Vue. Ada beberapa path  /login, /home, dan /profile, dengan isAuth untuk yang mengecek apakah halaman tersebut perlu autentikasi atau tidak. hanya halaman /login yang ditujukan untuk user yg belum autentikasi, sedangkan /home dan /profile untuk user yang sudah login.
+yang memeriksa status login pengguna adalah fungsi `beforeEach`. 
