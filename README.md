@@ -6,6 +6,7 @@
 
 ## Demo Video
 ![Demo](2024-11-16%01-24-49.gif)
+###### (jika video tidak muncul, liat file 2024-11-16 01-24-49.gif pada repository)
 
 
 ## Persiapan (Firebase)
