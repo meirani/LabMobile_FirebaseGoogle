@@ -229,3 +229,7 @@ export default router;
 ```
 Kode di atas adalah konfigurasi untuk routing menggunakan Vue Router dan Ionic Vue. Ada beberapa path  /login, /home, dan /profile, dengan isAuth untuk yang mengecek apakah halaman tersebut perlu autentikasi atau tidak. hanya halaman /login yang ditujukan untuk user yg belum autentikasi, sedangkan /home dan /profile untuk user yang sudah login.
 yang memeriksa status login pengguna adalah fungsi `beforeEach`. 
+
+
+## Kesimpulan
+Aplikasi ini menggunakan Firebase dan Pinia untuk autentikasi dengan akun Google. Prosesnya pengguna login dengan Google melalui loginWithGoogle(), yang menginisialisasi autentikasi Google dan meminta token dari akun pengguna. Token ini digunakan untuk membuat kredensial Firebase dan mengautentikasi pengguna ke aplikasi. Setelah berhasil login, data pengguna (seperti username) disimpan di state Pinia untuk digunakan di seluruh aplikasi. Dengan status autentikasi yang diperbarui, aplikasi dapat mengarahkan pengguna ke halaman beranda atau profil mereka, yang menunjukkan informasi seperti username dan detail profil yang terkait dengan akun Google mereka.
