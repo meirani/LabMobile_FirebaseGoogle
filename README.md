@@ -5,7 +5,7 @@
 ### Shift E
 
 ## Demo Video
-![Demo](2024-11-16%2001-24-49.gif)
+![Demo](2024-11-16%01-24-49.gif)
 
 
 ## Persiapan (Firebase)
