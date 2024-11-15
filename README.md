@@ -142,6 +142,7 @@ Di atas ini adalah fungsi yang menggunakan Pinia dan Firebase. Terdapat variabel
 
 
 4. file tampilan halaman
+
 LoginPage.vue: ini adalah file untuk tampilan halaman login, halaman login berisi tulisan "Praktikum Pemograman Mobile" dan juga satu button untuk login menggunakan google
 TabsMenu.vue: ini adalah file yang berada di folder components, file ini untuk membuat navigasi menu yang berisi dua icon untuk mengarahkan ke halaman home dan profile
 HomePage.vue: ini adalah halaman home yang akan muncul pertama kali saat user berhasil login, halaman ini hanya kosong saja dengan title home
