@@ -5,6 +5,8 @@
 ### Shift E
 
 ## Demo Video
+![Demo](2024-11-16%01-24-49.gif)
+
 
 ## Persiapan (Firebase)
 1. Buat Project di firebase bernama Vue-firebase
@@ -13,6 +15,40 @@
 4. Setelah itu create project ionic, pilih frameword vue
 
 ## Penjelasan Kode
+1. main.ts
+```
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router';
+
+import { IonicVue } from '@ionic/vue';
+
+import '@ionic/vue/css/normalize.css';
+import '@ionic/vue/css/structure.css';
+import '@ionic/vue/css/typography.css';
+
+import '@ionic/vue/css/padding.css';
+import '@ionic/vue/css/float-elements.css';
+import '@ionic/vue/css/text-alignment.css';
+import '@ionic/vue/css/text-transformation.css';
+import '@ionic/vue/css/flex-utils.css';
+import '@ionic/vue/css/display.css';
+
+import './theme/variables.css';
+import { createPinia } from 'pinia';
+
+const app = createApp(App)
+  .use(IonicVue)
+  .use(createPinia())
+  .use(router);
+
+router.isReady().then(() => {
+  app.mount('#app');
+});
+
+```
+file diatas ini berfungsi menginisialisasi Vue dengan Ionic dan Pinia untuk manajemen state, mengatur CSS dasar dari Ionic, dan mengonfigurasi router. aplikasi ini juga dipasang ke elemen HTML setelah router siap.
+2. firebase.ts
 ```
 // src/utils/firebase.ts
 import { initializeApp } from "firebase/app";
@@ -36,6 +72,7 @@ const googleProvider = new GoogleAuthProvider();
 export { auth, googleProvider };
 ```
 Kode diatas ini adalah file untuk integrasi firebase, sesuaikan firebase config dengan data yang ada di project firebase kita
+3. auth.ts
 ```
 export const useAuthStore = defineStore('auth', () => {
     const user = ref<User | null>(null);
@@ -96,3 +133,4 @@ export const useAuthStore = defineStore('auth', () => {
     return { user, isAuth, loginWithGoogle, logout };
 });
 ```
+Di atas ini adalah fungsi yang menggunakan Pinia dan Firebase. Terdapat variabel user untuk menyimpan data pengguna dan isAuth yabg memeriksa status login. Fungsi loginWithGoogle mengimplementasikan login menggunakan Google dan mengarahkan pengguna ke halaman home jika berhasil login, jika gagal, alert ditampilkan. Fungsi logout untuk keluar dari akun, menghapus status autentikasi di Firebase dan Google, dan mengarahkan ke halaman login.
