@@ -228,7 +228,7 @@ router.beforeEach(async (to, from, next) => {
 export default router;
 ```
 Kode di atas adalah konfigurasi untuk routing menggunakan Vue Router dan Ionic Vue. Ada beberapa path  /login, /home, dan /profile, dengan isAuth untuk yang mengecek apakah halaman tersebut perlu autentikasi atau tidak. hanya halaman /login yang ditujukan untuk user yg belum autentikasi, sedangkan /home dan /profile untuk user yang sudah login.
-yang memeriksa status login pengguna adalah fungsi `beforeEach`. 
+yang memeriksa status login pengguna adalah fungsi beforeEach. 
 
 
 ## Kesimpulan
