@@ -7,7 +7,7 @@
 
 ## Demo Video
 ![Demo](DemoVideoCRUD.gif)
-###### (jika video tidak muncul, liat file DemoVideoCRUD.gif.gif pada repository)
+###### (jika video tidak muncul, liat file DemoVideoCRUD.gif pada repository)
 
 # Login Google 
 
