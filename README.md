@@ -6,8 +6,8 @@
 #### Login google dan CRUD dengan Firebase
 
 ## Demo Video
-![Demo](2024-11-16%01-24-49.gif)
-###### (jika video tidak muncul, liat file 2024-11-16 01-24-49.gif pada repository)
+![Demo](DemoVideoCRUD.gif)
+###### (jika video tidak muncul, liat file DemoVideoCRUD.gif.gif pada repository)
 
 # Login Google 
 
