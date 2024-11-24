@@ -1,9 +1,9 @@
 # Ionic Vue Firebase
 ## Praktikum Pemograman Mobile
-### Nabila Winanda Meirani
-### H1D022108
-### Shift E
-### Login google dan CRUD dengan Firebase
+#### Nabila Winanda Meirani
+#### H1D022108
+#### Shift E
+#### Login google dan CRUD dengan Firebase
 
 ## Demo Video
 ![Demo](2024-11-16%01-24-49.gif)
