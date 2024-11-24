@@ -3,11 +3,13 @@
 ### Nabila Winanda Meirani
 ### H1D022108
 ### Shift E
+### Login google dan CRUD dengan Firebase
 
 ## Demo Video
 ![Demo](2024-11-16%01-24-49.gif)
 ###### (jika video tidak muncul, liat file 2024-11-16 01-24-49.gif pada repository)
 
+# Login Google 
 
 ## Persiapan (Firebase)
 1. Buat Project di firebase bernama Vue-firebase
@@ -233,3 +235,7 @@ yang memeriksa status login pengguna adalah fungsi beforeEach.
 
 ## Kesimpulan
 Aplikasi ini menggunakan Firebase dan Pinia untuk autentikasi dengan akun Google. Prosesnya pengguna login dengan Google melalui loginWithGoogle(), yang menginisialisasi autentikasi Google dan meminta token dari akun pengguna. Token ini digunakan untuk membuat kredensial Firebase dan mengautentikasi pengguna ke aplikasi. Setelah berhasil login, data pengguna (seperti username) disimpan di state Pinia untuk digunakan di seluruh aplikasi. Dengan status autentikasi yang diperbarui, aplikasi dapat mengarahkan pengguna ke halaman beranda atau profil mereka, yang menunjukkan informasi seperti username dan detail profil yang terkait dengan akun Google mereka.
+
+# CRUD
+
+
